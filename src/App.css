@@ -16,6 +16,10 @@
   --darkTheme-Very-Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
 }
 
+body {
+  font-family: var(--josefin-sans);
+}
+
 h1 {
   display: block;
   margin-inline-start: 0px;
@@ -24,92 +28,103 @@ h1 {
   unicode-bidi: isolate;
 }
 
-body {
+:-webkit-any(article, aside, nav, section) h1 {
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+}
+
+.app {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.dark-mode .app {
+  background-color: #161722;
+  transition: background-color 0.8s ease;
+}
+
+.light-mode .app {
   background-color: white;
   transition: background-color 0.8s ease;
 }
 
-.app{
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.dark-mode {
-  background-color: #161722;
-}
-
-.background{
+.background {
   align-items: center;
   display: flex;
   justify-content: center;
 }
 
-.main{
+.main {
   width: 100%;
   max-width: 45rem;
   margin: 90px 25px;
   margin-top: -300px;
-  /* padding-top:  200px; */
-
+  position: relative;
+  z-index: 2;
+  padding: 0 20px;
 }
 
-.title{
+.title {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 5rem;
 }
 
-.title h1{
+.title h1 {
   font-size: 2.7rem;
+  /* font-weight: bolder; */
+  /* font-weight: ; */
   letter-spacing: 15px;
   color: var(--darkTheme-Light-Grayish-Blue-hover);
 }
 
-
 /* Light mode background */
 .light-mode .background {
-  background-image: url('./assets/bg-desktop-light-BIdKokTn.jpg');
+  background-image: url("./assets/bg-desktop-light-BIdKokTn.jpg");
   background-size: cover;
   background-position: center;
   width: 100%;
   height: 410px;
-  
 }
 
 /* Dark mode background */
 .dark-mode .background {
-  background-image: url('./assets/bg-desktop-dark-DzAvO98h\ \(1\).jpg'); /* Add your dark background image */
+  background-image: url("./assets/bg-desktop-dark-DzAvO98h\ \(1\).jpg"); /* Add your dark background image */
   background-size: cover;
   background-position: center;
   width: 100%;
   height: 410px;
 }
-
 
 /* Toggle button styling */
 .toggle-button {
   height: 40px;
   cursor: pointer;
-  
 }
 
-/* .dark-mode .toggle-button {
-  background-color: #333;
-  color: white;
-} */
-
-.container{
+.container {
+  font-family: var(--josefin-sans) !important;
   padding: 0 10px;
   height: 70px;
   border-radius: 5px;
-  /* box-shadow: 0 -1px 138px 1px #000000c2; */
-  -webkit-box-shadow: 0px -1px 138px 1px rgba(0, 0, 0, .76);
-  /* -moz-box-shadow: 0px -1px 138px 1px rgba(0, 0, 0, .76); */
-  transition: all .4s;
+  box-shadow: 0 -1px 138px 1px #000000c2;
+  -webkit-box-shadow: 0px -1px 138px 1px rgba(0, 0, 0, 0.76);
+  -moz-box-shadow: 0px -1px 138px 1px rgba(0, 0, 0, 0.76);
+  transition: all 0.4s;
+}
 
+.dark-mode .container {
+  background-color: var(--darkTheme-Very-Dark-Desaturated-Blue);
+  color: var(--darkTheme-Light-Grayish-Blue);
+}
+
+.light-mode .container {
+  background-color: var(--lightTheme-Very-Light-Gray) !important;
+  color: var(--darkTheme-Very-Dark-Desaturated-Blue);
 }
 
 .todo-input {
@@ -117,24 +132,10 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
-  
 }
-
-.light-mode .todo-input{
-  background-color: var(--lightTheme-Very-Light-Gray) !important;
-  color: var(--darkTheme-Very-Dark-Desaturated-Blue);
-}
-
-.dark-mode .todo-input{
-  background-color: var(--darkTheme-Very-Dark-Desaturated-Blue);
-  color: var(--darkTheme-Light-Grayish-Blue);
-}
-
-
 
 .todo-input input {
   background: transparent;
-  font-family: var(--josefin-sans);
   font-size: 1.3rem;
   height: 100%;
   border: none;
@@ -149,21 +150,18 @@ body {
   justify-content: center;
   align-items: center;
   /* background-color: red; */
-
 }
 
-.checkmark button:hover{
+.checkmark button:hover {
   background-image: var(--Check-Background);
 }
 
-.dark-mode .checkmark button{
+.dark-mode .checkmark button {
   border: 1px solid var(--lightTheme-Light-Grayish-Blue) !important;
 }
 
-.light-mode .checkmark button{
+.light-mode .checkmark button {
   border: 1px solid var(--darkTheme-Very-Dark-Grayish-Blue) !important;
-
-  
 }
 
 .checkmark button {
@@ -179,19 +177,32 @@ body {
   align-items: center;
 }
 
-.checkmark button:hover{
+.checkmark button:hover {
   background-color: var(--Check-Background);
 }
 
-.todo-info{
-  
-
+.todo-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  padding: 20px 25px !important;
+  height: auto;
+  color: var(--darkTheme-Dark-Grayish-Blue) !important;
+  font-size: 1.1rem;
+  transition: all 0.3s;
+  border-radius: 0 0 5px 5px !important;
 }
 
-.light-mode .todo-info{
-  background-color: var(--lightTheme-Very-Light-Gray) !important
+.todo-info li:active {
+  color: var(--Bright-Blue) !important;
 }
 
-.dark-mode .todo-info{
-  background-color: var(--darkTheme-Very-Dark-Desaturated-Blue);
+@media (max-width: 375px) {
+  .todo-info {
+    display: grid;
+    background: none;
+    padding: 0;
+    /* row-gap: 20px; */
+  }
 }

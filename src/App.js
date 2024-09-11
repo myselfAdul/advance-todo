@@ -45,16 +45,18 @@ const App = () => {
           <input type="text" placeholder="Create a new todo..." />
         </div>
 
-        <div className="todo-info container ">
+        {/* Activity section */}
+        <div className="todo-info container  sm:text-xl ">
           <div>0 items left</div>
-          <div className="flex gap-5">
-            <p>All</p>
-            <p>Active</p>
-            <p>Complete</p>
+          <ul className="flex gap-5 cursor-pointer ">
+            <li className=" hover:text-gray-700">All</li>
+            <li className=" hover:text-gray-700">Active</li>
+            <li className=" hover:text-gray-700">Complete</li>
+          </ul>
+          <div className="cursor-pointer hover:text-gray-700">
+            Clear Completed
           </div>
-          <div> Clear Completed</div>
         </div>
-        
       </div>
     </div>
   );
