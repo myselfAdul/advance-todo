@@ -254,6 +254,21 @@ h1 {
   color: var(--darkTheme-Very-Very-Dark-Grayish-Blue);
 }
 
+
+
+.search-input{
+  display: flex;
+  margin: 10px 0;
+  font-size: 16px;
+  color: var(--lightTheme-Very-Light-Gray);
+
+  input{
+    padding: 10px ;
+    outline: none;
+    background-color: var(--darkTheme-Very-Dark-Blue);
+  }
+}
+
 @media (max-width: 375px) {
   .todo-info {
     display: grid;

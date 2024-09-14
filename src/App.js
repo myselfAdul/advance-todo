@@ -3,30 +3,23 @@ import "./App.css";
 
 import moon from "./assets/night-mode.png";
 import sun from "./assets/sun-icon-2048x2048-ylj2peao.png";
-
-// import cross from './assets/cart_cross_icon.png'
 import cross from "./assets/close.png";
 import darkCross from "./assets/dark-close.png";
 
 const App = () => {
-  // State to toggle between light and dark mode
   const [darkMode, setDarkMode] = useState(false);
-
   const [todos, setTodos] = useState(() => {
-    // Retrieve todos from localStorage when the component mounts
     const savedTodos = localStorage.getItem("todos");
     return savedTodos ? JSON.parse(savedTodos) : [];
   });
-
   const [newTodo, setNewTodo] = useState("");
-  const [filter, setFilter] = useState("all"); // Filter state: 'all', 'active', 'completed'
+  const [filter, setFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  // Function to toggle dark mode
   const handleToggle = () => {
     setDarkMode(!darkMode);
   };
 
-  // Apply or remove the 'dark-mode' class from body when darkMode changes
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add("dark-mode");
@@ -35,12 +28,10 @@ const App = () => {
     }
   }, [darkMode]);
 
-  // Save todos to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  // Add new todo
   const handleAddTodo = (e) => {
     e.preventDefault();
     if (newTodo.trim() === "") return;
@@ -49,12 +40,10 @@ const App = () => {
     setNewTodo("");
   };
 
-  // Delete todo
   const handleDeleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  // Toggle complete status when checkmark is clicked
   const handleToggleComplete = (id) => {
     setTodos(
       todos.map((todo) =>
@@ -63,27 +52,31 @@ const App = () => {
     );
   };
 
-  // Filtered todos based on the current filter state
   const filteredTodos = todos.filter((todo) => {
-    if (filter === "active") return !todo.completed;
-    if (filter === "completed") return todo.completed;
-    return true; // For "all", return everything
+    if (filter === "active" && todo.completed) return false;
+    if (filter === "completed" && !todo.completed) return false;
+    if (
+      searchQuery &&
+      !todo.text.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+      return false;
+    return true;
   });
 
-  // Clear completed todos
   const handleClearCompleted = () => {
     setTodos(todos.filter((todo) => !todo.completed));
   };
 
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
     <div className={`app ${darkMode ? "dark-mode" : "light-mode"}`}>
-      {/* Background */}
       <div className="background"></div>
-      <div className="main ">
-        <div className="title ">
+      <div className="main">
+        <div className="title">
           <h1>TODO</h1>
-
-          {/* Add toggle button */}
           <img
             src={darkMode ? sun : moon}
             alt="sun/moon"
@@ -105,7 +98,17 @@ const App = () => {
           </form>
         </div>
 
-        {/* List todos here */}
+        {/* Search input */}
+        <div className="search-input  ">
+          <input
+            
+            type="text"
+            placeholder="Search todos here..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+        </div>
+
         <div className="todo-list shadow">
           {filteredTodos.map((todo) => (
             <div
@@ -129,7 +132,6 @@ const App = () => {
               >
                 {todo.text}
               </p>
-
               <button
                 className="delete-button"
                 onClick={() => handleDeleteTodo(todo.id)}
@@ -143,7 +145,6 @@ const App = () => {
           ))}
         </div>
 
-        {/* filter Activity section */}
         <div className="todo-info container sm:text-xl">
           <div>{todos.filter((todo) => !todo.completed).length} items left</div>
           <ul className="flex gap-5 cursor-pointer">
