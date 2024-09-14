@@ -76,8 +76,6 @@ h1 {
 
 .title h1 {
   font-size: 2.7rem;
-  /* font-weight: bolder; */
-  /* font-weight: ; */
   letter-spacing: 15px;
   color: var(--darkTheme-Light-Grayish-Blue-hover);
 }
@@ -112,10 +110,16 @@ h1 {
   height: 70px;
   border-radius: 5px;
   font-size: 18px;
-  /* box-shadow: 0 -1px 138px 1px #000000c2; */
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 0 2px 20px rgba(0, 0, 0, 0.2); */
+
+  /* box-shadow: 1 -1px 138px 1px #000000c2; */
   /* -webkit-box-shadow: 0px -1px 138px 1px rgba(0, 0, 0, 0.76); */
   /* -moz-box-shadow: 0px -1px 138px 1px rgba(0, 0, 0, 0.76); */
   transition: all 0.4s;
+}
+
+.shadow {
+  box-shadow: 0 130px 30px rgba(0, 0, 0, 0.15);
 }
 
 .dark-mode .container {
@@ -198,6 +202,15 @@ h1 {
   font-size: 1.1rem;
   transition: all 0.3s;
   border-radius: 0 0 5px 5px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.light-mode .todo-info li:hover {
+  color: var(--darkTheme-Very-Dark-Blue);
+}
+
+.dark-mode .todo-info li:hover {
+  color: var(--lightTheme-Very-Light-Grayish-Blue);
 }
 
 .todo-info li:active {
@@ -218,6 +231,16 @@ h1 {
   display: flex;
   justify-content: end;
   align-items: center;
+}
+
+.checkmark .checked {
+  background-image: var(--Check-Background) !important;
+  border: none;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: var(--darkTheme-Very-Very-Dark-Grayish-Blue);
 }
 
 @media (max-width: 375px) {
