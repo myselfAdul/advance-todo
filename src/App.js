@@ -79,7 +79,7 @@ const App = () => {
     <div className={`app ${darkMode ? "dark-mode" : "light-mode"}`}>
       {/* Background */}
       <div className="background"></div>
-      <div className="main">
+      <div className="main ">
         <div className="title ">
           <h1>TODO</h1>
 
