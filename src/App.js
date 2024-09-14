@@ -5,8 +5,8 @@ import moon from "./assets/night-mode.png";
 import sun from "./assets/sun-icon-2048x2048-ylj2peao.png";
 
 // import cross from './assets/cart_cross_icon.png'
-import cross from './assets/close.png'
-import darkCross from './assets/dark-close.png'
+import cross from "./assets/close.png";
+import darkCross from "./assets/dark-close.png";
 
 const App = () => {
   // State to toggle between light and dark mode
@@ -81,7 +81,6 @@ const App = () => {
                 <button className="checkmark-inner"></button>
               </div>
               <div
-                // type="checkbox"
                 checked={todo.completed}
                 onChange={() =>
                   setTodos(
@@ -91,13 +90,16 @@ const App = () => {
                   )
                 }
               />
-              <span className="flex-1">{todo.text}</span>
+              <p className=" text-container flex-1">{todo.text}</p>
 
               <button
                 className="delete-button"
                 onClick={() => handleDeleteTodo(todo.id)}
               >
-                <img src={darkMode ? darkCross : cross} alt="delete note button" />
+                <img
+                  src={darkMode ? darkCross : cross}
+                  alt="delete todo button"
+                />
               </button>
             </div>
           ))}
