@@ -74,7 +74,7 @@ const App = () => {
   return (
     <div className={`app ${darkMode ? "dark-mode" : "light-mode"}`}>
       <div className="background"></div>
-      <div className="main">
+      <div className="main ">
         <div className="title">
           <h1>TODO</h1>
           <img
@@ -145,9 +145,9 @@ const App = () => {
           ))}
         </div>
 
-        <div className="todo-info container sm:text-xl">
+        <div className="todo-info shadow-2xl container sm:text-xl ">
           <div>{todos.filter((todo) => !todo.completed).length} items left</div>
-          <ul className="flex gap-5 cursor-pointer">
+          <ul className="flex gap-2 cursor-pointer">
             <li
               className={` ${filter === "all" ? "active-filter" : ""}`}
               onClick={() => setFilter("all")}
@@ -167,9 +167,9 @@ const App = () => {
               Completed
             </li>
           </ul>
-          <li className="cursor-pointer " onClick={handleClearCompleted}>
+          <p className="cursor-pointer " onClick={handleClearCompleted}>
             Clear Completed
-          </li>
+          </p>
         </div>
       </div>
     </div>
